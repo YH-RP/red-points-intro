@@ -14,17 +14,21 @@
             --card-bg: #ffffff;
             --text-main: #334155;
             --text-light: #94a3b8;
+            --border: #e2e8f0;
         }
         body { background-color: var(--bg); color: var(--text-main); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        .card { background: var(--card-bg); border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); border: 1px solid #e2e8f0; }
-        .tag { background: #f1f5f9; color: var(--secondary); padding: 4px 12px; border-radius: 6px; font-size: 0.875rem; font-weight: 500; border: 1px solid #e2e8f0; }
-        .tag-pending { background: white; color: var(--text-light); border: 1px dashed var(--text-light); }
+        .card { background: var(--card-bg); border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); border: 1px solid var(--border); }
         .nav-red { background: var(--primary); }
         
-        /* 流程圖樣式優化 */
-        .flow-container { display: flex; justify-content: space-between; align-items: center; position: relative; }
-        .flow-item { z-index: 10; background: white; border: 1px solid #e2e8f0; padding: 12px 20px; border-radius: 8px; font-size: 0.9rem; }
-        .flow-line { position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: #e2e8f0; z-index: 1; }
+        /* 表格樣式微調 */
+        .market-table th { background-color: #fcfcfc; color: var(--secondary); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .market-table td { border-bottom: 1px solid #f1f5f9; font-size: 0.875rem; }
+        
+        /* 流程圖樣式優化 (移除突兀箭頭) */
+        .flow-container { display: flex; justify-content: space-between; align-items: center; position: relative; gap: 1rem; }
+        .flow-item { z-index: 10; background: white; border: 1px solid var(--border); padding: 10px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; }
+        .flow-line { position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: var(--border); z-index: 1; }
+        .tag-pending { background: transparent; color: var(--text-light); border: 1px dashed var(--text-light); }
     </style>
 </head>
 <body>
@@ -34,124 +38,122 @@
             <div class="flex items-center space-x-2">
                 <span class="font-bold tracking-tight text-lg">RED POINTS <span class="font-light opacity-80">× VICTOR</span></span>
             </div>
-            <div class="text-[10px] bg-white/20 px-2 py-1 rounded border border-white/30 uppercase tracking-widest">Live Monitoring</div>
+            <div class="text-[10px] bg-white/20 px-2 py-1 rounded border border-white/30 uppercase tracking-widest italic">Live Monitoring</div>
         </div>
     </nav>
 
-    <div class="max-w-6xl mx-auto p-6 md:p-10">
+    <div class="max-w-6xl mx-auto p-6 md:p-10 space-y-10">
         
-        <section class="mb-10">
-            <h2 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center">
-                <span class="w-8 h-[2px] bg-[#c0565b] mr-2"></span> 監測網域 Monitoring Platforms
+        <section>
+            <h2 class="text-xl font-bold flex items-center mb-2">
+                ✨ 監測網域及監測流程解釋
             </h2>
-            <div class="flex flex-wrap gap-3">
-                <span class="tag">Shopee</span>
-                <span class="tag">Lazada</span>
-                <span class="tag">Tokopedia</span>
-                <span class="tag">Taobao</span>
-                <span class="tag">Amazon</span>
-                <span class="tag">JD</span>
-                <span class="tag">TMall</span>
-                <span class="tag">AliExpress</span>
-                <span class="tag">Alibaba</span>
-                <span class="tag tag-pending italic">NAVER (申請中)</span>
+            <p class="text-slate-400 text-sm flex items-center italic">
+                <span class="mr-2">🌏</span> 監測網域範圍與自動化處置基準
+            </p>
+        </section>
+
+        <section class="card overflow-hidden">
+            <table class="w-full market-table text-left">
+                <thead>
+                    <tr>
+                        <th class="px-6 py-4 w-16 text-center">No.</th>
+                        <th class="px-6 py-4">網域</th>
+                        <th class="px-6 py-4 text-center">偵測市場數</th>
+                        <th class="px-6 py-4">備註</th>
+                    </tr>
+                </thead>
+                <tbody class="text-slate-600">
+                    <tr><td class="px-6 py-3 text-center">01</td><td class="px-6 py-3 font-semibold text-slate-700">Shopee</td><td class="px-6 py-3 text-center">11</td><td class="px-6 py-3 text-xs text-slate-400">BR, CL, CO, MX, TW, ID, TH, MY, PH, SG, VN</td></tr>
+                    <tr><td class="px-6 py-3 text-center text-slate-300">02</td><td class="px-6 py-3 font-semibold text-slate-700">Lazada</td><td class="px-6 py-3 text-center">6</td><td class="px-6 py-3 text-xs text-slate-400">ID, TH, MY, PH, SG, VN</td></tr>
+                    <tr><td class="px-6 py-3 text-center text-slate-300">03</td><td class="px-6 py-3 font-semibold text-slate-700">Tokopedia</td><td class="px-6 py-3 text-center">1</td><td class="px-6 py-3 text-xs text-slate-400">www.com (全球)</td></tr>
+                    <tr><td class="px-6 py-3 text-center text-slate-300">04</td><td class="px-6 py-3 font-semibold text-slate-700">Taobao</td><td class="px-6 py-3 text-center">1</td><td class="px-6 py-3 text-xs text-slate-400">CN</td></tr>
+                    <tr><td class="px-6 py-3 text-center text-slate-300">05</td><td class="px-6 py-3 font-semibold text-slate-700">Amazon</td><td class="px-6 py-3 text-center">18</td><td class="px-6 py-3 text-xs text-slate-400 italic">AE, CA, CO, UK, JP, AU, BR, MX, TR, DE, ES, FR, IN, IT, NL, SA, SE, SG</td></tr>
+                    <tr><td class="px-6 py-3 text-center text-slate-300">06</td><td class="px-6 py-3 font-semibold text-slate-700">JD</td><td class="px-6 py-3 text-center">1</td><td class="px-6 py-3 text-xs text-slate-400">CN</td></tr>
+                    <tr><td class="px-6 py-3 text-center text-slate-300">07</td><td class="px-6 py-3 font-semibold text-slate-700">TMall</td><td class="px-6 py-3 text-center">1</td><td class="px-6 py-3 text-xs text-slate-400">CN</td></tr>
+                    <tr><td class="px-6 py-3 text-center text-slate-300">08</td><td class="px-6 py-3 font-semibold text-slate-700">AliExpress</td><td class="px-6 py-3 text-center">1</td><td class="px-6 py-3 text-xs text-slate-400">www.com (全球)</td></tr>
+                    <tr><td class="px-6 py-3 text-center text-slate-300">09</td><td class="px-6 py-3 font-semibold text-slate-700 border-b-0">Alibaba</td><td class="px-6 py-3 text-center border-b-0">1</td><td class="px-6 py-3 text-xs text-slate-400 border-b-0">www.com (全球)</td></tr>
+                </tbody>
+            </table>
+            <div class="bg-slate-50 px-6 py-3 border-t border-slate-100">
+                <span class="tag-pending px-3 py-1 rounded text-[11px] font-medium tracking-wide">NAVER (申請中)</span>
             </div>
         </section>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
+        <section class="card p-8">
+            <h3 class="text-xs font-bold text-slate-400 uppercase tracking-[0.2em] mb-10 text-center">下架執行流程 Enforcement Flow</h3>
+            <div class="flow-container max-w-5xl mx-auto overflow-x-auto pb-4">
+                <div class="flow-line"></div>
+                <div class="flow-item shadow-sm whitespace-nowrap">自動偵測</div>
+                <div class="flow-item shadow-sm whitespace-nowrap">申請下架</div>
+                <div class="flow-item shadow-sm bg-red-50/50 border-[#c0565b]/30 text-[#c0565b] whitespace-nowrap">下架成功</div>
+                <div class="flow-item shadow-sm whitespace-nowrap">賣家收到通知</div>
+                <div class="flow-item shadow-sm text-slate-400 border-dashed italic whitespace-nowrap">賣家再上架...</div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div class="lg:col-span-2 card p-8">
-                <h3 class="text-lg font-bold mb-6 flex items-center" style="color: var(--primary);">
-                    下架執行規範
-                </h3>
+                <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">下架執行規範</h3>
                 <div class="space-y-6">
                     <div class="flex items-start space-x-4">
-                        <div class="bg-red-50 p-3 rounded-lg text-[#c0565b] font-bold text-sm">手動</div>
+                        <div class="bg-red-50 p-2 rounded text-[#c0565b] font-bold text-[10px] uppercase tracking-wider border border-[#c0565b]/10">Manual</div>
                         <div>
-                            <p class="font-bold">手動下架標準</p>
-                            <p class="text-sm text-slate-500">當庫存量 <span class="text-[#c0565b] font-bold">> 2,000</span> 個時執行</p>
+                            <p class="font-bold text-slate-700">手動下架標準</p>
+                            <p class="text-xs text-slate-500 mt-1 italic">當庫存量 <span class="text-[#c0565b] font-bold border-b border-[#c0565b]/30">> 2,000</span> 個時執行</p>
                         </div>
                     </div>
-                    
-                    <div class="h-[1px] bg-slate-100"></div>
-
-                    <div class="flex items-start space-x-4">
-                        <div class="bg-slate-100 p-3 rounded-lg text-slate-600 font-bold text-sm">自動</div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
-                            <div>
-                                <p class="font-bold text-sm mb-2 text-slate-600">SHOPEE-台灣 (下架門檻)</p>
-                                <ul class="text-xs space-y-2 text-slate-500">
-                                    <li class="flex justify-between"><span>28 類 (球拍/羽球)</span><span class="font-bold text-[#c0565b]">> 100</span></li>
-                                    <li class="flex justify-between"><span>25 類 (球鞋/服裝)</span><span class="font-bold text-[#c0565b]">> 100</span></li>
-                                    <li class="flex justify-between"><span>18 類 (拍包)</span><span class="font-bold text-[#c0565b]">> 100</span></li>
-                                </ul>
+                    <div class="h-px bg-slate-50"></div>
+                    <div>
+                        <p class="font-bold text-slate-700 mb-4 text-sm flex items-center">
+                            <span class="w-2 h-2 bg-slate-200 rounded-full mr-2"></span> SHOPEE-台灣 (自動下架門檻)
+                        </p>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                            <div class="p-3 border border-slate-50 rounded-lg">
+                                <p class="text-[10px] text-slate-400 uppercase mb-1 font-semibold tracking-tighter">球拍和羽球 (28類)</p>
+                                <p class="text-sm font-bold text-[#c0565b]">> 100 <span class="text-[10px] font-normal text-slate-300">pcs</span></p>
                             </div>
-                            <div class="md:pt-7">
-                                <ul class="text-xs space-y-2 text-slate-500">
-                                    <li class="flex justify-between"><span>28 類 (Grip)</span><span class="font-bold text-[#c0565b]">> 600</span></li>
-                                    <li class="flex justify-between"><span>25 類 (頭帶/護腕)</span><span class="font-bold text-[#c0565b]">> 600</span></li>
-                                </ul>
+                            <div class="p-3 border border-slate-50 rounded-lg">
+                                <p class="text-[10px] text-slate-400 uppercase mb-1 font-semibold tracking-tighter">球鞋和服裝 (25類)</p>
+                                <p class="text-sm font-bold text-[#c0565b]">> 100 <span class="text-[10px] font-normal text-slate-300">pcs</span></p>
+                            </div>
+                            <div class="p-3 border border-slate-50 rounded-lg">
+                                <p class="text-[10px] text-slate-400 uppercase mb-1 font-semibold tracking-tighter">拍包 (18類)</p>
+                                <p class="text-sm font-bold text-[#c0565b]">> 100 <span class="text-[10px] font-normal text-slate-300">pcs</span></p>
+                            </div>
+                            <div class="p-3 border border-slate-50 rounded-lg">
+                                <p class="text-[10px] text-slate-400 uppercase mb-1 font-semibold tracking-tighter">Grip (28類)</p>
+                                <p class="text-sm font-bold text-[#c0565b]">> 600 <span class="text-[10px] font-normal text-slate-300">pcs</span></p>
+                            </div>
+                            <div class="p-3 border border-slate-50 rounded-lg">
+                                <p class="text-[10px] text-slate-400 uppercase mb-1 font-semibold tracking-tighter">護腕/頭帶 (25類)</p>
+                                <p class="text-sm font-bold text-[#c0565b]">> 600 <span class="text-[10px] font-normal text-slate-300">pcs</span></p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="card p-8 space-y-6">
-                <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest">核心定義</h3>
+            <div class="card p-8 space-y-8">
                 <div>
-                    <p class="font-bold text-sm text-slate-700">產品仿冒 (Counterfeit)</p>
-                    <p class="text-[12px] text-slate-500 leading-relaxed mt-1">銷售未經授權的仿冒品，容易與正品混淆。</p>
-                </div>
-                <div>
-                    <p class="font-bold text-sm text-slate-700">品牌濫用 (Brand Abuse)</p>
-                    <p class="text-[12px] text-slate-500 leading-relaxed mt-1">商標侵權。標題使用品牌名但照片無品牌字樣。</p>
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">核心定義</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="font-bold text-xs text-slate-700">產品仿冒 (Counterfeit)</p>
+                            <p class="text-[11px] text-slate-400 leading-relaxed mt-1 italic">銷售未經授權仿冒品，易與正品混淆。</p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-50">
+                            <p class="font-bold text-xs text-slate-700">品牌濫用 (Brand Abuse)</p>
+                            <p class="text-[11px] text-slate-400 leading-relaxed mt-1 italic">商標侵權行為。標題使用品牌名但照片無品牌字樣。</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <section class="card p-8 mb-10">
-            <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-8 text-center">下架流程 Status Flow</h3>
-            <div class="flow-container max-w-4xl mx-auto">
-                <div class="flow-line"></div>
-                <div class="flow-item shadow-sm">自動偵測</div>
-                <div class="flow-item shadow-sm">申請下架</div>
-                <div class="flow-item shadow-sm bg-slate-50 border-[#c0565b]/30 text-[#c0565b] font-bold">下架成功</div>
-                <div class="flow-item shadow-sm">賣家收到通知</div>
-                <div class="flow-item shadow-sm text-slate-400 border-dashed italic">賣家再上架...</div>
-            </div>
-        </section>
-
-        <section class="card overflow-hidden">
-            <table class="w-full text-left text-sm">
-                <thead class="bg-slate-50 text-slate-500 font-medium">
-                    <tr>
-                        <th class="px-6 py-4">狀態 (Status)</th>
-                        <th class="px-6 py-4">說明 (Description)</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-slate-100">
-                    <tr>
-                        <td class="px-6 py-4 font-semibold text-slate-600">Detected</td>
-                        <td class="px-6 py-4 text-slate-500">偵測首階段，含正品與潛在侵權。</td>
-                    </tr>
-                    <tr>
-                        <td class="px-6 py-4 font-semibold text-[#c0565b]">Validated</td>
-                        <td class="px-6 py-4 text-slate-500">侵權已確認，進入執行程序。</td>
-                    </tr>
-                    <tr>
-                        <td class="px-6 py-4 font-semibold text-slate-600">On Enforcement</td>
-                        <td class="px-6 py-4 text-slate-500">執法中，等待平台關閉連結。</td>
-                    </tr>
-                    <tr>
-                        <td class="px-6 py-4 font-semibold text-green-600 text-base">✓ Enforced</td>
-                        <td class="px-6 py-4 text-slate-500">強制執行成功，連結已移除。</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
     </div>
 
-    <footer class="text-center py-10 text-slate-400 text-[10px] tracking-widest uppercase">
+    <footer class="text-center py-12 text-slate-400 text-[10px] tracking-[0.3em] uppercase opacity-60">
         Red Points Brand Protection Data Center © 2026
     </footer>
 
