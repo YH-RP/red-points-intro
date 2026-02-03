@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RED POINTS Dashboard Concept</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+    <nav class="bg-red-600 p-4 text-white shadow-lg">
+        <h1 class="text-2xl font-bold">RED POINTS | 品牌保護概覽</h1>
+    </nav>
+    
+    <div class="max-w-6xl mx-auto p-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white p-6 rounded-lg shadow border-l-4 border-red-500">
+                <p class="text-gray-500 uppercase text-xs font-bold">已偵測侵權案件</p>
+                <h2 class="text-3xl font-bold text-gray-800">12,845</h2>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow border-l-4 border-blue-500">
+                <p class="text-gray-500 uppercase text-xs font-bold">成功移除率</p>
+                <h2 class="text-3xl font-bold text-gray-800">94.2%</h2>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow border-l-4 border-green-500">
+                <p class="text-gray-500 uppercase text-xs font-bold">回收潛在營收</p>
+                <h2 class="text-3xl font-bold text-gray-800">$2.4M</h2>
+            </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow mb-8">
+            <h3 class="text-lg font-bold mb-4">侵權平台分佈 (Top Platforms)</h3>
+            <canvas id="myChart" style="max-height: 300px;"></canvas>
+        </div>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('myChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Amazon', 'Shopee', 'Facebook', 'Instagram', 'AliExpress'],
+                datasets: [{
+                    label: '偵測次數',
+                    data: [4500, 3200, 2100, 1800, 1245],
+                    backgroundColor: 'rgba(220, 38, 38, 0.7)'
+                }]
+            }
+        });
+    </script>
+</body>
+</html>
